@@ -1,12 +1,11 @@
-package com.rb.rbkotlin
+package com.rb.billKotlin
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.rb.billKotlin.R
-import com.rb.rbkotlin.database.CheckDao
-import com.rb.rbkotlin.database.CheckTabBean
+import com.rb.billKotlin.database.CheckDao
+import com.rb.billKotlin.database.CheckTabBean
 
 /**
  * @author: changZePeng

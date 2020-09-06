@@ -1,4 +1,4 @@
-package com.rb.rbkotlin
+package com.rb.billKotlin
 
 import android.app.Activity
 import android.content.pm.PackageManager

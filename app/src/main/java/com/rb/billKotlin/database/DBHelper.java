@@ -1,4 +1,4 @@
-package com.rb.rbkotlin.database;
+package com.rb.billKotlin.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

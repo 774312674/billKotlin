@@ -1,4 +1,4 @@
-package com.rb.rbkotlin
+package com.rb.billKotlin
 
 
 import android.view.LayoutInflater
@@ -6,8 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.rb.billKotlin.R
-import com.rb.rbkotlin.database.CheckTabBean
+import com.rb.billKotlin.database.CheckTabBean
 import java.text.SimpleDateFormat
 import java.util.*
 

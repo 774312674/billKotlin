@@ -1,19 +1,15 @@
-package com.rb.rbkotlin
+package com.rb.billKotlin
 
 import android.Manifest
 import android.app.Activity
-import android.content.ContentUris
-import android.content.Context
 import android.content.Intent
-import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
-import android.provider.DocumentsContract
 import android.provider.MediaStore
-import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -21,13 +17,15 @@ import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.rb.billKotlin.R
-import com.rb.rbkotlin.database.CheckDao
-import com.rb.rbkotlin.database.CheckTabBean
-import com.rb.rbkotlin.dialog.SystemImageDialog
-import com.rb.rbkotlin.util.FileUtil
-import com.rb.rbkotlin.util.UriUtil
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import com.rb.billKotlin.database.CheckDao
+import com.rb.billKotlin.database.CheckTabBean
+import com.rb.billKotlin.dialog.SystemImageDialog
+import com.rb.billKotlin.util.FileUtil
+import com.rb.billKotlin.util.UriUtil
 import kotlinx.android.synthetic.main.activity_add.*
+import org.json.JSONArray
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
@@ -141,9 +139,9 @@ class AddActivity : BaseActivity() {
             etPrice.setText(checkTabBean.price.toString())
             etRemarks.setText(checkTabBean.remarks)
             var image = checkTabBean.image
-            image.split(",") as ArrayList<String>
+
+            Gson().fromJson(image, object : TypeToken<ArrayList<String>>() {}.type)
         }
-        images.remove("")
         imagesAdapter= ImageAdapter(images)
         rvImages.layoutManager = GridLayoutManager(this,3)
         rvImages.adapter = imagesAdapter
@@ -154,10 +152,9 @@ class AddActivity : BaseActivity() {
         val content= etContent.text.toString()
         val price = etPrice.text.toString().toDouble()
         val remarks=etRemarks.text.toString()
-        var image = ""
-        for(i in images){
-            image = "$image,$i"
-        }
+
+        var image= Gson().toJson(images).toString()
+
         CheckDao(this).insert(CheckTabBean(content,price,remarks,image))
     }
 

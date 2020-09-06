@@ -1,14 +1,13 @@
-package com.rb.rbkotlin.dialog
+package com.rb.billKotlin.dialog
 
-import android.graphics.Color
 import android.os.Bundle
-import android.util.DisplayMetrics
+import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
-import com.rb.rbkotlin.R
+import com.rb.billKotlin.R
 
 /**
  * @author: changZePeng
@@ -21,7 +20,7 @@ class SystemImageDialog: DialogFragment(),View.OnClickListener{
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.dialog_system_image,null)
+        val view = inflater.inflate(R.layout.dialog_system_image,container)
         val tvPhoto= view.findViewById<TextView>(R.id.tvPhoto)
         val tvCamera= view.findViewById<TextView>(R.id.tvCamera)
 
@@ -30,6 +29,18 @@ class SystemImageDialog: DialogFragment(),View.OnClickListener{
 
         return view
     }
+
+    override fun onStart() {
+        super.onStart()
+
+        val window=dialog?.window
+        window?.setBackgroundDrawableResource(R.color.transparent)
+        window?.setLayout(-1, -2);
+
+    }
+
+
+
     override fun onClick(v: View?) {
         if (v!=null){
             when(v.id){

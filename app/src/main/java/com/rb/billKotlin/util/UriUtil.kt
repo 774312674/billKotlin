@@ -1,4 +1,4 @@
-package com.rb.rbkotlin.util
+package com.rb.billKotlin.util
 
 import android.content.ContentUris
 import android.content.Context

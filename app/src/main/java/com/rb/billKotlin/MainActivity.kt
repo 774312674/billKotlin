@@ -1,4 +1,4 @@
-package com.rb.rbkotlin
+package com.rb.billKotlin
 
 import android.content.Intent
 import android.os.Build
@@ -7,7 +7,6 @@ import android.os.StrictMode
 import android.os.StrictMode.VmPolicy
 import android.view.View
 import android.widget.TextView
-import com.rb.billKotlin.R
 
 
 //:继承
