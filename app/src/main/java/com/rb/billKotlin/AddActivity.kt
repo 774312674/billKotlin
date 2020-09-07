@@ -9,7 +9,6 @@ import android.os.Handler
 import android.os.Looper
 import android.os.Message
 import android.provider.MediaStore
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -116,8 +115,8 @@ class AddActivity : BaseActivity() {
             }
         })
 
-        if(verifyPermissions(this@AddActivity,PERMISSIONS_STORAGE[2]) == 0){
-            ActivityCompat.requestPermissions(this@AddActivity, PERMISSIONS_STORAGE, 3);
+        if(verifyPermissions(this,PERMISSIONS_STORAGE[2]) == 0){
+            ActivityCompat.requestPermissions(this, PERMISSIONS_STORAGE, 3);
         }else{
             checkDao = CheckDao(this)
         }
@@ -129,7 +128,7 @@ class AddActivity : BaseActivity() {
             }
         }
 
-        var id = intent.getLongExtra("id",-1)
+        val id = intent.getLongExtra("id",-1)
 
         images = if ( id<0){
              arrayListOf()
@@ -138,7 +137,7 @@ class AddActivity : BaseActivity() {
             etContent.setText(checkTabBean.content)
             etPrice.setText(checkTabBean.price.toString())
             etRemarks.setText(checkTabBean.remarks)
-            var image = checkTabBean.image
+            val image = checkTabBean.image
 
             Gson().fromJson(image, object : TypeToken<ArrayList<String>>() {}.type)
         }
