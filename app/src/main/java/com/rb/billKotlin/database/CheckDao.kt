@@ -1,8 +1,10 @@
 package com.rb.billKotlin.database
 
+import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import androidx.core.content.contentValuesOf
+
 
 /**
  * @author: changZePeng
@@ -32,6 +34,19 @@ class CheckDao {
     fun delete(id: String): Boolean {
         val long =
             database.delete(SqlConstants.TAB_NAME, SqlConstants.TAB_CHECK_ID + "=?", arrayOf(id))
+        return long > 0
+    }
+
+    fun update(checkTabBean: CheckTabBean): Boolean {
+        val contentValues = contentValuesOf()
+        contentValues.put(SqlConstants.TAB_CHECK_CONTENT, checkTabBean.content)
+        contentValues.put(SqlConstants.TAB_CHECK_PRICE, checkTabBean.price)
+        contentValues.put(SqlConstants.TAB_CHECK_REMARKS, checkTabBean.remarks)
+        contentValues.put(SqlConstants.TAB_CHECK_IMAGE, checkTabBean.image)
+        contentValues.put(SqlConstants.TAB_CHECK_CREATE_TIME, checkTabBean.createTime)
+        contentValues.put(SqlConstants.TAB_CHECK_UPLOAD_TIME, checkTabBean.uploadTime)
+        val long =database.update(SqlConstants.TAB_NAME,contentValues,SqlConstants.TAB_CHECK_ID+"=?",
+            arrayOf(checkTabBean.id.toString()))
         return long > 0
     }
 
@@ -82,18 +97,18 @@ class CheckDao {
                 SqlConstants.TAB_CHECK_IMAGE,
                 SqlConstants.TAB_CHECK_CREATE_TIME,
                 SqlConstants.TAB_CHECK_UPLOAD_TIME
-            ), SqlConstants.TAB_CHECK_ID+"=$id", null, null, null, null
+            ), SqlConstants.TAB_CHECK_ID + "=$id", null, null, null, null
         )
         cursor.moveToFirst()
         return CheckTabBean(
-                cursor.getLong(0),
-                cursor.getString(1),
-                cursor.getDouble(2),
-                cursor.getString(3),
-                cursor.getString(4),
-                cursor.getLong(5),
-                cursor.getLong(6)
-            )
+            cursor.getLong(0),
+            cursor.getString(1),
+            cursor.getDouble(2),
+            cursor.getString(3),
+            cursor.getString(4),
+            cursor.getLong(5),
+            cursor.getLong(6)
+        )
 
     }
 

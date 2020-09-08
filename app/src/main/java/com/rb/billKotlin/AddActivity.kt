@@ -63,6 +63,8 @@ class AddActivity : BaseActivity() {
     val TAKE_PICK = 100
 
     lateinit var checkDao: CheckDao
+    var id:Long = -1
+    lateinit var checkTabBean:CheckTabBean
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -124,16 +126,23 @@ class AddActivity : BaseActivity() {
         //lambda表达式规则
         btPreserve.setOnClickListener{ v ->
             if (v != null) {
-                submit()
+
+                if ((-1).toLong() ==id){
+                    submit()//添加
+                }else{
+                    update()//修改
+                }
             }
         }
 
-        val id = intent.getLongExtra("id",-1)
+        id = intent.getLongExtra("id",-1)
 
-        images = if ( id<0){
-             arrayListOf()
+        images = if (id<0){
+            btPreserve.text = "添加"
+            arrayListOf()
         }else{
-            val checkTabBean = checkDao.select(id)
+            btPreserve.text = "修改"
+            checkTabBean = checkDao.select(id)
             etContent.setText(checkTabBean.content)
             etPrice.setText(checkTabBean.price.toString())
             etRemarks.setText(checkTabBean.remarks)
@@ -155,6 +164,21 @@ class AddActivity : BaseActivity() {
         var image= Gson().toJson(images).toString()
 
         CheckDao(this).insert(CheckTabBean(content,price,remarks,image))
+    }
+
+
+    private fun update(){
+        val content= etContent.text.toString()
+        val price = etPrice.text.toString().toDouble()
+        val remarks=etRemarks.text.toString()
+        var image= Gson().toJson(images).toString()
+
+        checkTabBean.content=content
+        checkTabBean.remarks = remarks
+        checkTabBean.price = price
+        checkTabBean.image = image
+
+        CheckDao(this).update(checkTabBean)
     }
 
 
@@ -239,6 +263,7 @@ class AddActivity : BaseActivity() {
 
 
 }
+
 
 
 
