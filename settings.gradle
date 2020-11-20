@@ -1,2 +1,5 @@
+include ':httpRetrofit'
+include ':annotation'
+include ':factory-compiler'
 include ':app'
 rootProject.name = "billKotlin"
