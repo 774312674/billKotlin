@@ -1,8 +1,6 @@
-package com.rb.httpretrofit;
+package com.rb.http_retrofit;
 
-import java.util.Observable;
-
-import retrofit2.Call;
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 
 /**

@@ -1,19 +1,17 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "30.0.0"
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.rb.billKotlin"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -26,20 +24,22 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.1'
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    
+    //github地址：https://github.com/square/retrofit
+    //文档地址：https://square.github.io/retrofit/
+    api 'com.squareup.retrofit2:retrofit:2.5.0'
+    //retrofit添加Json解析返回数据
+    api 'com.squareup.retrofit2:converter-gson:2.5.0'
+    //Retrofit 与 Rxjava
+    api 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+    //避免出现内存泄漏问题
+    api 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
 
-    implementation 'com.google.code.gson:gson:2.8.6'
 
-    annotationProcessor project(':factory-compiler')
-    implementation project(':annotation')
-    implementation project(':http-retrofit')
 
 
 }

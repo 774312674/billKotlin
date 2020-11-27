@@ -1,6 +1,11 @@
-package com.rb.httpretrofit;
+package com.rb.http_retrofit;
+
+import android.util.Log;
+
+import com.rb.http_retrofit.log.HttpLogUtil;
 
 import java.io.IOException;
+import java.util.Locale;
 
 import okhttp3.Call;
 import okhttp3.Interceptor;
@@ -18,15 +23,15 @@ class LogInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
-//        Log.e(TAG,"request:" + request.toString());
+        HttpLogUtil.getInstance().e("request:" + request.toString());
         long t1 = System.nanoTime();
         okhttp3.Response response = chain.proceed(chain.request());
         long t2 = System.nanoTime();
-//        Log.e(TAG,String.format(Locale.getDefault(), "Received response for %s in %.1fms%n%s",
-//                response.request().url(), (t2 - t1) / 1e6d, response.headers()));
+        HttpLogUtil.getInstance().e(String.format(Locale.getDefault(), "Received response for %s in %.1fms%n%s",
+                response.request().url(), (t2 - t1) / 1e6d, response.headers()));
         okhttp3.MediaType mediaType = response.body().contentType();
         String content = response.body().string();
-//        Log.e(TAG, "response body:" + content);
+        HttpLogUtil.getInstance().e("response body:" + content);
 
         return response.newBuilder()
                 .body(okhttp3.ResponseBody.create(mediaType, content))

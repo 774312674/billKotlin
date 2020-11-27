@@ -1,4 +1,4 @@
-include ':httpRetrofit'
+include ':http-retrofit'
 include ':annotation'
 include ':factory-compiler'
 include ':app'

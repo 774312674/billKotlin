@@ -7,6 +7,7 @@ import android.os.StrictMode
 import android.os.StrictMode.VmPolicy
 import android.view.View
 import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 //:继承
@@ -15,16 +16,15 @@ class MainActivity : BaseActivity(),View.OnClickListener{
     /**
      * lateinit 延迟初始化
      */
-    private lateinit var tvSee:TextView
-    private lateinit var tvAdd:TextView
+//    private lateinit var tvSee1:TextView
 
     //savedInstanceState: Bundle?  ?表示可能为null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        tvSee = findViewById(R.id.tvSee)
+//        tvSee = findViewById(R.id.tvSee)
         tvSee.setOnClickListener(this)
-        tvAdd = findViewById(R.id.tvAdd)
+
         tvAdd.setOnClickListener(this)
 
         //跳转相机动态权限

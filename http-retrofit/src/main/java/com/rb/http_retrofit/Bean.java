@@ -1,4 +1,4 @@
-package com.rb.httpretrofit;
+package com.rb.http_retrofit;
 
 /**
  * TODO desc
@@ -6,5 +6,6 @@ package com.rb.httpretrofit;
  * @author: miaoke1
  * @date: 2020/11/20
  */
-class Bean {
+public class Bean {
+
 }

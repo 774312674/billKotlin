@@ -47,13 +47,6 @@ class AddActivity : BaseActivity() {
 
     //lateinit延迟初始化
     lateinit var tvContent: TextView
-    lateinit var tvPrice: TextView
-    lateinit var tvImage: TextView
-    lateinit var etContent: EditText
-    lateinit var etPrice: EditText
-    lateinit var rvImages: RecyclerView
-    lateinit var btAdd: Button
-    lateinit var btPreserve: Button
 
     lateinit var imagesAdapter:ImageAdapter
 
@@ -71,13 +64,13 @@ class AddActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add)
         tvContent = findViewById(R.id.tvContent)
-        tvPrice = findViewById(R.id.tvPrice)
-        tvImage = findViewById(R.id.tvImage)
-        etContent = findViewById(R.id.etContent)
-        etPrice = findViewById(R.id.etPrice)
-        rvImages = findViewById(R.id.rvImages)
-        btAdd = findViewById(R.id.btAdd)
-        btPreserve = findViewById(R.id.btPreserve)
+//        tvPrice = findViewById(R.id.tvPrice)
+//        tvImage = findViewById(R.id.tvImage)
+//        etContent = findViewById(R.id.etContent)
+//        etPrice = findViewById(R.id.etPrice)
+//        rvImages = findViewById(R.id.rvImages)
+//        btAdd = findViewById(R.id.btAdd)
+//        btPreserve = findViewById(R.id.btPreserve)
 
         btAdd.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {

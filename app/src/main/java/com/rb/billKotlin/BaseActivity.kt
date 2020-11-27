@@ -5,14 +5,14 @@ import android.content.pm.PackageManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 
 
 /**
  * @author: changZePeng
  * @date: 2020/8/31
  */
-
-open class BaseActivity : AppCompatActivity(){
+open class BaseActivity : RxAppCompatActivity(){
 
     fun showToast(con:String){
         Toast.makeText(this,con,Toast.LENGTH_SHORT).show();

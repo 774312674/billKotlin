@@ -1,4 +1,4 @@
-package com.rb.httpretrofit;
+package com.rb.http_retrofit;
 
 /**
  * TODO desc
